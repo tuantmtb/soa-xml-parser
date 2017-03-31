@@ -1,4 +1,4 @@
-package model;
+package com.fit.soa.parsexml;
 
 /**
  * Created by tuantmtb on 3/31/17.

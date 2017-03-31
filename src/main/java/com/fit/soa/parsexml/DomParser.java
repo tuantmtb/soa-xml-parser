@@ -1,9 +1,8 @@
-/**
+package com.fit.soa.parsexml; /**
  * Created by tuantmtb on 3/31/17.
  */
 
 import java.io.File;
-import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -11,16 +10,13 @@ import java.util.List;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.DocumentBuilder;
 
-import model.Book;
-import org.apache.commons.io.IOUtils;
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 import org.w3c.dom.Node;
 import org.w3c.dom.Element;
 
 public class DomParser {
-    public static void main(String[] args) throws Exception {
-
+    public void parser(){
         try {
             List<Book> lstBook = new ArrayList<Book>();
             File inputFile = new File("data_xml/book.xml");
@@ -53,10 +49,14 @@ public class DomParser {
 
             // get list by order price
             lstBook.sort(Comparator.comparing(Book::getPrice));
-            lstBook.forEach(System.out::println);
+            lstBook.forEach(book -> System.out.println(book.getTitle() + ", - price: " + book.getPrice()));
 
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public static void main(String[] args) throws Exception {
+        new DomParser().parser();
     }
 }
